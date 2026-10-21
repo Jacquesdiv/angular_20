@@ -23,8 +23,12 @@
   <img src="../../../../../shared/logo.svg" alt="" id="upimg" width="40" height="40" style="display:none">
   <script src="js/script-5.js"></script>
   <script>
-    document.getElementById('img').onload = () => document.getElementById('img-probe').className='probe ok';
-    document.getElementById('upimg').onload = () => document.getElementById('up-probe').className='probe ok';
+    const mark = (img, probe) => {
+      const hit = () => document.getElementById(probe).className = 'probe ok';
+      if (img.complete && img.naturalWidth > 0) hit(); else img.onload = hit;
+    };
+    mark(document.getElementById('img'), 'img-probe');
+    mark(document.getElementById('upimg'), 'up-probe');
     fetch('/data/products.json').then(r=>r.ok?r.json():Promise.reject())
       .then(()=>document.getElementById('json-probe').className='probe ok').catch(()=>{});
   </script>
