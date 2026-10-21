@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>depth 1 | /l1</title>
+<!-- root-absolute: must resolve identically from every depth -->
+<link rel="stylesheet" href="/shared/global.css">
+<!-- relative, in this folder -->
+<link rel="stylesheet" href="css/style-1.css">
+</head>
+<body data-page="/l1" data-depth="1">
+  <h1>/l1</h1>
+  <p class="depth">folder depth 1 &middot; document <code>l1/index.html</code></p>
+
+  <div class="probe" id="global-css-probe">root-absolute CSS <code>/shared/global.css</code></div>
+  <div class="probe" id="rel-css-probe">relative CSS <code>css/style-1.css</code></div>
+  <div class="probe pending" id="js-probe">relative JS <code>js/script-1.js</code></div>
+  <div class="probe pending" id="img-probe">relative image <code>img/dot-1.svg</code></div>
+  <div class="probe pending" id="up-probe">parent-relative <code>../shared/logo.svg</code></div>
+  <div class="probe pending" id="json-probe">root-absolute fetch <code>/data/products.json</code></div>
+
+  <img src="img/dot-1.svg" alt="" id="img" width="40" height="40" style="display:none">
+  <img src="../shared/logo.svg" alt="" id="upimg" width="40" height="40" style="display:none">
+  <script src="js/script-1.js"></script>
+  <script>
+    document.getElementById('img').onload = () => document.getElementById('img-probe').className='probe ok';
+    document.getElementById('upimg').onload = () => document.getElementById('up-probe').className='probe ok';
+    fetch('/data/products.json').then(r=>r.ok?r.json():Promise.reject())
+      .then(()=>document.getElementById('json-probe').className='probe ok').catch(()=>{});
+  </script>
+</body></html>

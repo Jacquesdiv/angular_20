@@ -1,28 +1,34 @@
-<main class="card">
-  <p class="eyebrow">Code Capsules deployment test</p>
-  <h1>Static Free</h1>
-  <p class="detail">
-    Served from the <code>static-free</code> branch of
-    <code>angular_20</code>.
-  </p>
-  <p class="marker" data-testid="hosting-marker">Static Free</p>
-</main>
+<main>
+  <h1>Static capsule &mdash; deep folder routing test</h1>
+  <p class="sub">Angular shell at <code>/</code>. Everything below is a pre-rendered document in a folder, served from object storage.</p>
 
-<style>
-  :host {
-    display: block;
-    min-height: 100vh;
-    background: #b45309;
-    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-    color: #fff;
-    display: grid;
-    place-items: center;
-    padding: 2rem;
-  }
-  .card { max-width: 34rem; text-align: center; }
-  .eyebrow { opacity: .7; letter-spacing: .04em; margin: 0 0 .5rem; }
-  h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0 0 1rem; line-height: 1.05; }
-  .detail { opacity: .85; line-height: 1.6; }
-  code { background: rgba(255,255,255,.15); padding: .1em .35em; border-radius: .25em; }
-  .marker { font-weight: 700; letter-spacing: .08em; margin-top: 2rem; }
-</style>
+  <h2>Folder pages, no trailing slash</h2>
+  <ul>
+    <li><a href="/l1">/l1</a> &mdash; depth 1</li>
+    <li><a href="/l1/l2">/l1/l2</a> &mdash; depth 2</li>
+    <li><a href="/l1/l2/l3">/l1/l2/l3</a> &mdash; depth 3</li>
+    <li><a href="/l1/l2/l3/l4">/l1/l2/l3/l4</a> &mdash; depth 4</li>
+    <li><a href="/l1/l2/l3/l4/l5">/l1/l2/l3/l4/l5</a> &mdash; depth 5</li>
+  </ul>
+
+  <h2>Same pages, trailing slash</h2>
+  <ul>
+    <li><a href="/l1/">/l1/</a></li>
+    <li><a href="/l1/l2/l3/l4/l5/">/l1/l2/l3/l4/l5/</a></li>
+  </ul>
+
+  <h2>Files with extensions</h2>
+  <ul>
+    <li><a href="/about.html">/about.html</a></li>
+    <li><a href="/docs/guide.html">/docs/guide.html</a></li>
+    <li><a href="/data/products.json">/data/products.json</a></li>
+    <li><a href="/shared/global.css">/shared/global.css</a></li>
+  </ul>
+
+  <h2>Edge cases</h2>
+  <ul>
+    <li><a href="/LICENSE">/LICENSE</a> &mdash; extension-less file (known trade-off)</li>
+    <li><a href="/temp-section">/temp-section</a> &mdash; removed in deploy 2, tests pruning</li>
+    <li><a href="/no-such-route">/no-such-route</a> &mdash; SPA fallback</li>
+  </ul>
+</main>

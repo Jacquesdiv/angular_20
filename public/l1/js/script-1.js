@@ -1,0 +1,1 @@
+document.getElementById("js-probe").className="probe ok";

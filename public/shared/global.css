@@ -1,0 +1,13 @@
+:root { --ok: #1b7f4b; --bg: #10151c; }
+body { margin:0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+       background: var(--bg); color: #e8eef5; padding: 2.5rem; line-height:1.6; }
+h1 { font-size: 1.4rem; margin:0 0 .25rem; }
+.depth { color:#7f8ea3; margin:0 0 2rem; }
+.probe { border-left: 3px solid #2b3744; padding: .6rem .9rem; margin: .5rem 0;
+         background:#161d26; border-radius:0 4px 4px 0; }
+.ok { border-left-color: var(--ok); }
+.ok::before { content:"PASS  "; color: var(--ok); font-weight:700; }
+.pending::before { content:"....  "; color:#7f8ea3; }
+#global-css-probe { border-left-color: var(--ok); }
+#global-css-probe::before { content:"PASS  "; color: var(--ok); font-weight:700; }
+a { color:#6db3f2; }
